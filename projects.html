@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pili John – Projects</title>
+  <meta name="description" content="A showcase of Pili John's web development projects." />
+  <meta name="keywords" content="Pili John, web development, portfolio, projects" />
+  <meta name="author" content="Pili John" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+</head>
+<body>
+  <header>
+    <div class="container flex" style="align-items:center; justify-content:space-between;">
+      <h1>Pili John</h1>
+      <nav class="horizontal">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="survey.html">Survey</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-labelledby="projects-heading" class="projects-grid">
+      <h2 id="projects-heading">My Projects</h2>
+
+      <!-- Project Card 1 -->
+      <article class="project-card" tabindex="0">
+        <div class="project-content">
+          <h3>Project One</h3>
+          <p class="project-summary">
+            A responsive landing page built with HTML5, CSS3, and vanilla JavaScript.
+          </p>
+          <button class="toggle-details btn">More Details</button>
+          <div class="project-details hidden">
+            <p>
+              This project features a mobile‑first design, custom CSS animations,
+              and form validation logic. View the code on
+              <a href="https://github.com/username/project-one" target="_blank">GitHub</a>
+              or see the live demo
+              <a href="https://username.github.io/project-one" target="_blank">here</a>.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project Card 2 -->
+      <article class="project-card" tabindex="0">
+        <div class="project-content">
+          <h3>Project Two</h3>
+          <p class="project-summary">
+            A dynamic to‑do list app using React and localStorage for persistence.
+          </p>
+          <button class="toggle-details btn">More Details</button>
+          <div class="project-details hidden">
+            <p>
+              Built with React Hooks, this app allows users to add, edit,
+              and delete tasks. Tasks are saved in the browser’s localStorage
+              so data persists across sessions. Source code is on
+              <a href="https://github.com/username/project-two" target="_blank">GitHub</a>.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project Card 3 -->
+      <article class="project-card" tabindex="0">
+        <div class="project-content">
+          <h3>Project Three</h3>
+          <p class="project-summary">
+            A full‑stack blog platform with Node.js, Express, and MongoDB.
+          </p>
+          <button class="toggle-details btn">More Details</button>
+          <div class="project-details hidden">
+            <p>
+              Features include user authentication, CRUD for posts,
+              and a rich‑text editor. Deployed on Heroku with a live demo
+              available <a href="https://project-three.herokuapp.com" target="_blank">here</a>,
+              and source code on
+              <a href="https://github.com/username/project-three" target="_blank">GitHub</a>.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      <p>&copy; <span id="year-projects"></span> Pili John. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

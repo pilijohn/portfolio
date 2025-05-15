@@ -1,0 +1,339 @@
+/*——————————————————————————————————————————————  
+  1. Variables & Base Reset  
+——————————————————————————————————————————————*/
+:root {
+  --color-bg: #f9f9f9;
+  --color-foreground: #212121;
+  --color-primary: #0077cc;
+  --color-accent: #ff6600;
+  --color-muted: #666;
+  --font-sans: 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Georgia', serif;
+  --transition: 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-foreground);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*——————————————————————————————————————————————  
+  2. Typography  
+——————————————————————————————————————————————*/
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-bottom: 0.5em;
+}
+
+p, li, label {
+  color: var(--color-foreground);
+  margin-bottom: 1em;
+}
+
+/*——————————————————————————————————————————————  
+  3. Layout Helpers  
+——————————————————————————————————————————————*/
+.container {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/*——————————————————————————————————————————————  
+  4. Header & Navigation  
+——————————————————————————————————————————————*/
+header {
+  background: #fff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav.horizontal {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav.horizontal a {
+  text-decoration: none;
+  color: var(--color-muted);
+  font-weight: 500;
+  padding: 0.5rem;
+  transition: color var(--transition);
+}
+
+nav.horizontal a:hover,
+nav.horizontal a.active {
+  color: var(--color-primary);
+}
+
+/*——————————————————————————————————————————————  
+  5. Hero Section (Home)  
+——————————————————————————————————————————————*/
+#hero {
+  background: url('../images/hero-bg.jpg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 6rem 1rem;
+  position: relative;
+}
+
+#hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+#hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+#hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0.5rem auto 2rem;
+}
+
+#hero .btn {
+  background: var(--color-accent);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+#hero .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/*——————————————————————————————————————————————  
+  6. About Page (2‑Column Layout)  
+——————————————————————————————————————————————*/
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.about-text {
+  flex: 2;
+}
+
+.about-image {
+  flex: 1;
+}
+
+.about-image img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/*——————————————————————————————————————————————  
+  7. Projects Page (3‑Column Grid)  
+——————————————————————————————————————————————*/
+.projects-grid {
+  margin: 3rem 0;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.project-card img {
+  width: 100%;
+  display: block;
+}
+
+.project-card h3 {
+  padding: 1rem;
+  margin: 0;
+}
+
+.project-summary {
+  padding: 0 1rem 1rem;
+}
+
+.project-details {
+  padding: 0 1rem 1rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+/*——————————————————————————————————————————————  
+  8. Forms (Contact & Survey)  
+——————————————————————————————————————————————*/
+form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 2rem 0;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  transition: border-color var(--transition);
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 1.5rem;
+}
+
+form legend {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+form button {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+form button:hover {
+  background: var(--color-accent);
+}
+
+/*——————————————————————————————————————————————  
+  9. Embedded Media & Maps  
+——————————————————————————————————————————————*/
+iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  display: block;
+}
+
+img[usemap] {
+  display: block;
+  margin: 2rem auto;
+}
+
+/*——————————————————————————————————————————————  
+ 10. Dark/Light Mode Toggle  
+——————————————————————————————————————————————*/
+body.dark-mode {
+  background: var(--color-foreground);
+  color: var(--color-bg);
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background: #111;
+}
+
+body.dark-mode a {
+  color: var(--color-accent);
+}
+
+/*——————————————————————————————————————————————  
+ 11. Footer  
+——————————————————————————————————————————————*/
+footer {
+  margin-top: auto;
+  background: #fff;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+}
+
+/*——————————————————————————————————————————————  
+ 12. Print Styles  
+——————————————————————————————————————————————*/
+@media print {
+  nav, .btn, button, form, iframe { display: none !important; }
+  body { background: #fff; color: #000; }
+  a::after { content: " (" attr(href) ")"; }
+}
+
+/*——————————————————————————————————————————————  
+ 13. Responsive Breakpoints  
+——————————————————————————————————————————————*/
+@media (max-width: 768px) {
+  .about-container { flex-direction: column; }
+  #hero { padding: 4rem 1rem; }
+  #hero h2 { font-size: 2rem; }
+  iframe { height: 300px; }
+}

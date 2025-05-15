@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pili John – Site Feedback Survey</title>
+  <meta name="description" content="Help me improve—please take a moment to fill out this quick feedback survey." />
+  <meta name="keywords" content="survey, feedback, Pili John, portfolio" />
+  <meta name="author" content="Pili John" />
+  
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+  
+  <!-- Page‑specific (justified) -->
+  <style>
+    /* Center the form and give it breathing room */
+    #surveyForm {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+    /* Space out fieldsets */
+    fieldset {
+      margin-bottom: 1.5rem;
+      border: 1px solid #ddd;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+    }
+    legend {
+      font-weight: bold;
+      padding: 0 0.5rem;
+    }
+    /* Style radio/checkbox labels inline */
+    .choice-group label {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1.5rem;
+      cursor: pointer;
+    }
+    .choice-group input {
+      margin-right: 0.5rem;
+      transform: scale(1.1);
+    }
+    /* Comments area */
+    #comments {
+      resize: vertical;
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex" style="justify-content: space-between; align-items: center;">
+      <h1>Site Feedback Survey</h1>
+      <nav class="horizontal">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="survey.html" class="active">Survey</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <form id="surveyForm" action="#" novalidate>
+      <!-- Source Fieldset -->
+      <fieldset>
+        <legend>How did you hear about me?</legend>
+        <div class="choice-group" role="radiogroup" aria-labelledby="source-legend">
+          <label><input type="radio" name="source" value="friend" required> Friend</label>
+          <label><input type="radio" name="source" value="online"> Online Search</label>
+          <label><input type="radio" name="source" value="social"> Social Media</label>
+          <label><input type="radio" name="source" value="other"> Other</label>
+        </div>
+      </fieldset>
+
+      <!-- Content Usefulness Fieldset -->
+      <fieldset>
+        <legend>What content do you find most useful?</legend>
+        <div class="choice-group">
+          <label><input type="checkbox" name="useful" value="projects"> Projects</label>
+          <label><input type="checkbox" name="useful" value="blog"> Blog Posts</label>
+          <label><input type="checkbox" name="useful" value="contact"> Contact Info</label>
+          <label><input type="checkbox" name="useful" value="tutorials"> Tutorials</label>
+        </div>
+      </fieldset>
+
+      <!-- Open‑Ended Comments -->
+      <label for="comments">Additional Comments:</label>
+      <textarea id="comments" name="comments" placeholder="Your thoughts..." required></textarea>
+
+      <!-- Submit -->
+      <button type="submit" class="btn">Submit Survey</button>
+    </form>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align: center;">
+      <p>&copy; <span id="year-survey"></span> Pili John. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pili John – Contact</title>
+  <meta name="description" content="Get in touch with Pili John for project inquiries, collaborations, or just a hello." />
+  <meta name="keywords" content="contact, Pili John, web developer, email, phone" />
+  <meta name="author" content="Pili John" />
+  
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+  
+  <!-- Page‑specific (justified) -->
+  <style>
+    /* Centered, card‑style contact form */
+    #contactForm {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      display: grid;
+      gap: 1.5rem;
+    }
+    /* Label styling for clarity */
+    #contactForm label {
+      font-weight: 600;
+    }
+    /* Input & textarea focus state */
+    #contactForm input:focus,
+    #contactForm textarea:focus {
+      border-color: var(--color-primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.2);
+    }
+    /* Submit button tweaks */
+    #contactForm button {
+      justify-self: start;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container flex" style="justify-content: space-between; align-items: center;">
+      <h1>Contact Me</h1>
+      <nav class="horizontal">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="survey.html">Survey</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <form id="contactForm" action="mailto:you@example.com" method="post" enctype="text/plain" novalidate>
+      <!-- Name -->
+      <div>
+        <label for="name">Full Name<span aria-hidden="true" style="color:var(--accent-color)">*</span></label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email">Email Address<span aria-hidden="true" style="color:var(--accent-color)">*</span></label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+1234567890" pattern="^\+?\d{7,15}$" />
+      </div>
+
+      <!-- Subject -->
+      <div>
+        <label for="subject">Subject<span aria-hidden="true" style="color:var(--accent-color)">*</span></label>
+        <input type="text" id="subject" name="subject" placeholder="Project inquiry, collaboration, etc." required />
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="message">Message<span aria-hidden="true" style="color:var(--accent-color)">*</span></label>
+        <textarea id="message" name="message" rows="6" placeholder="How can I help you?" required></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align: center; padding: 1rem 0;">
+      <p>&copy; <span id="year-contact"></span> Pili John. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

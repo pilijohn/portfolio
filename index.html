@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pili John – Home</title>
+  <meta name="description" content="Welcome to Pili John's portfolio homepage." />
+  <meta name="keywords" content="portfolio, web developer, Pili John" />
+  <meta name="author" content="Pili John" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+  
+  <!-- Page‑specific styling -->
+  <style>
+    /* Remove default figure styles now that there is no image */
+    #featured-project figure {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: var(--color-bg);
+      border-left: 4px solid var(--color-primary);
+    }
+    #featured-project figcaption {
+      font-style: italic;
+      color: var(--color-muted);
+    }
+    /* Tighter hero button */
+    #hero .btn {
+      padding: 0.75rem 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header + Nav -->
+  <header>
+    <div class="container flex" style="align-items: center; justify-content: space-between;">
+      <h1>Pili John</h1>
+      <nav class="horizontal">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="survey.html">Survey</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-content container">
+        <h2 id="greeting">Hello!</h2>
+        <p>I'm Pili John, a web developer creating modern, responsive websites that engage and inspire.</p>
+        <a href="projects.html" class="btn">View My Work</a>
+      </div>
+    </section>
+
+    <!-- Featured Project (no image) -->
+    <section id="featured-project" class="container">
+      <h2>Featured Project</h2>
+      <figure>
+        <figcaption>“AwesomeApp” – A Task Management PWA</figcaption>
+      </figure>
+      <p>
+        <strong>AwesomeApp</strong> is a Progressive Web App built with React and Firebase. It offers:
+      </p>
+      <ul>
+        <li>Offline support and data sync</li>
+        <li>Push notifications for reminders</li>
+        <li>Drag‑and‑drop task organization</li>
+      </ul>
+      <p>
+        <a href="https://username.github.io/awesomeapp" target="_blank">Live Demo</a> |
+        <a href="https://github.com/username/awesomeapp" target="_blank">GitHub Repo</a>
+      </p>
+    </section>
+
+    <!-- Demo Video -->
+    <section id="video-demo" class="container">
+      <h2>Demo Video</h2>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="AwesomeApp Demo"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="text-align: center;">
+      <p>&copy; <span id="year"></span> Pili John. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+@media print {
+  nav, .no-print, button, input, textarea { display: none !important; }
+  body { font-size: 12pt; color: #000; }
+  a::after { content: " (" attr(href) ")"; }
+}

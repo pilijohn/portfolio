@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pili John – About Me</title>
+  <meta name="description" content="Learn more about Pili John: background, education, skills, and experience." />
+  <meta name="keywords" content="Pili John, about, skills, background, web developer" />
+  <meta name="author" content="Pili John" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+</head>
+<body>
+  <header>
+    <div class="container flex" style="align-items:center; justify-content:space-between;">
+      <h1>About Me</h1>
+      <nav class="horizontal">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About Me</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="survey.html">Survey</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container about-container">
+    <!-- Text Column -->
+    <div class="about-text" style="padding: 20px">
+      <section aria-labelledby="story-heading">
+        <h2 id="story-heading">My Story</h2>
+        <p>
+          Hello! I’m <strong>Pili John</strong>, a passionate web developer with a bachelor’s degree in Business Information System from Dodoma University.
+          Over the past 3 years, I’ve built responsive, user‑friendly web applications for clients across various industries,
+          ranging from e‑commerce sites to interactive dashboards.
+        </p>
+        <p>
+          My journey began when I coded my first HTML page in high school. Since then, I’ve honed my skills through
+          hands‑on projects, online courses, and contributing to open source. I thrive on solving complex problems
+          and turning ideas into reality with clean, maintainable code.
+        </p>
+      </section>
+
+      <section aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Skills</h2>
+        <ul  style="padding: 20px">
+          <li>Front‑end
+            <ol>
+              <li>HTML5 &amp; CSS3 (Flexbox, Grid, Responsive Design)</li>
+              <li>JavaScript (ES6+, DOM Manipulation, Fetch API)</li>
+              <li>React (Hooks, Context API, Router)</li>
+            </ol>
+          </li>
+          <li>Back‑end
+            <ol>
+              <li>Node.js & Express.js (REST APIs, Middleware)</li>
+              <li>Python & Django (ORM, Templating, Authentication)</li>
+              <li>Databases: MongoDB, PostgreSQL</li>
+            </ol>
+          </li>
+          <li>Tools & Others
+            <ol>
+              <li>Version Control: Git & GitHub</li>
+              <li>Deployment: Netlify, Vercel, Heroku</li>
+              <li>UI/UX: Figma basics, Accessibility best practices</li>
+            </ol>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Image Column -->
+    <div class="about-image">
+      <img src="images/IMG-20240829-WA0042.jpg" style="width: 400px;" alt="Photo of Pili John" />
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      <p>&copy; <span id="year-about"></span> Pili John. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
