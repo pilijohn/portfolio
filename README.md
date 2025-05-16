@@ -22,5 +22,6 @@
 
 ---
 
-**Live Demo:** https://username.github.io/portfolio  
+**Live Demo:** https://pilijohn.github.io/portfolio/
+**Github codes** https://github.com/pilijohn/portfolio
 **Download ZIP:** `portfolio.zip`

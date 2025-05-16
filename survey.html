@@ -7,56 +7,168 @@
   <meta name="description" content="Help me improve—please take a moment to fill out this quick feedback survey." />
   <meta name="keywords" content="survey, feedback, Pili John, portfolio" />
   <meta name="author" content="Pili John" />
-  
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/print.css" media="print" />
-  
-  <!-- Page‑specific (justified) -->
+
+  <!-- Embedded Responsive Styles -->
   <style>
-    /* Center the form and give it breathing room */
+    /* Root Variables */
+    :root {
+      --max-width: 1200px;
+      --spacing: 1rem;
+      --color-bg: #ffffff;
+      --color-primary: #0077cc;
+      --color-muted: #666666;
+    }
+
+    /* Global Reset & Typography */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      background: var(--color-bg);
+      color: #333;
+    }
+    a { color: var(--color-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout Container */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing);
+    }
+
+    /* Header & Navigation */
+    header {
+      background: var(--color-bg);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing) 0;
+      position: relative;
+    }
+    .hamburger {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    nav.horizontal {
+      display: none;
+      flex-direction: column;
+      gap: var(--spacing);
+      position: absolute;
+      top: 100%;
+      right: var(--spacing);
+      background: var(--color-bg);
+      width: calc(100% - 2*var(--spacing));
+      padding: var(--spacing);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    nav.horizontal.show {
+      display: flex;
+    }
+    nav.horizontal a {
+      padding: 0.5rem 0;
+      font-weight: 500;
+    }
+    nav.horizontal a.active {
+      color: var(--color-primary);
+    }
+
+    /* Survey Form Card */
+    main {
+      padding: 2rem 0;
+    }
     #surveyForm {
-      max-width: 600px;
-      margin: 3rem auto;
-      padding: 2rem;
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin: 0 auto;
+      max-width: 600px;
+      display: grid;
+      gap: var(--spacing);
     }
-    /* Space out fieldsets */
     fieldset {
-      margin-bottom: 1.5rem;
       border: 1px solid #ddd;
-      padding: 1rem 1.5rem;
       border-radius: 6px;
+      padding: 1rem 1.5rem;
     }
     legend {
+      font-size: 1.1rem;
       font-weight: bold;
       padding: 0 0.5rem;
     }
-    /* Style radio/checkbox labels inline */
+    .choice-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing);
+      margin-top: var(--spacing);
+    }
     .choice-group label {
       display: inline-flex;
       align-items: center;
-      margin-right: 1.5rem;
       cursor: pointer;
     }
     .choice-group input {
       margin-right: 0.5rem;
       transform: scale(1.1);
     }
-    /* Comments area */
     #comments {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       resize: vertical;
-      min-height: 100px;
+      min-height: 120px;
+      font-family: inherit;
+    }
+    .btn {
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      justify-self: start;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: var(--color-bg);
+      color: var(--color-muted);
+    }
+
+    /* Responsive Breakpoints */
+    @media (min-width: 768px) {
+      .hamburger { display: none; }
+      nav.horizontal {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        background: none;
+        box-shadow: none;
+        width: auto;
+        padding: 0;
+      }
+      .header-inner { padding: calc(var(--spacing) * 1.5) 0; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container flex" style="justify-content: space-between; align-items: center;">
+    <div class="container header-inner">
       <h1>Site Feedback Survey</h1>
-      <nav class="horizontal">
+      <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+      <nav class="horizontal" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="about.html">About Me</a>
         <a href="projects.html">Projects</a>
@@ -66,45 +178,46 @@
     </div>
   </header>
 
-  <main>
+  <main class="container">
     <form id="surveyForm" action="#" novalidate>
-      <!-- Source Fieldset -->
       <fieldset>
-        <legend>How did you hear about me?</legend>
+        <legend id="source-legend">How did you hear about me?</legend>
         <div class="choice-group" role="radiogroup" aria-labelledby="source-legend">
-          <label><input type="radio" name="source" value="friend" required> Friend</label>
-          <label><input type="radio" name="source" value="online"> Online Search</label>
-          <label><input type="radio" name="source" value="social"> Social Media</label>
-          <label><input type="radio" name="source" value="other"> Other</label>
+          <label><input type="radio" name="source" value="friend" required>Friend</label>
+          <label><input type="radio" name="source" value="online">Online Search</label>
+          <label><input type="radio" name="source" value="social">Social Media</label>
+          <label><input type="radio" name="source" value="other">Other</label>
         </div>
       </fieldset>
 
-      <!-- Content Usefulness Fieldset -->
       <fieldset>
         <legend>What content do you find most useful?</legend>
         <div class="choice-group">
-          <label><input type="checkbox" name="useful" value="projects"> Projects</label>
-          <label><input type="checkbox" name="useful" value="blog"> Blog Posts</label>
-          <label><input type="checkbox" name="useful" value="contact"> Contact Info</label>
-          <label><input type="checkbox" name="useful" value="tutorials"> Tutorials</label>
+          <label><input type="checkbox" name="useful" value="projects">Projects</label>
+          <label><input type="checkbox" name="useful" value="blog">Blog Posts</label>
+          <label><input type="checkbox" name="useful" value="contact">Contact Info</label>
+          <label><input type="checkbox" name="useful" value="tutorials">Tutorials</label>
         </div>
       </fieldset>
 
-      <!-- Open‑Ended Comments -->
       <label for="comments">Additional Comments:</label>
       <textarea id="comments" name="comments" placeholder="Your thoughts..." required></textarea>
 
-      <!-- Submit -->
       <button type="submit" class="btn">Submit Survey</button>
     </form>
   </main>
 
   <footer>
-    <div class="container" style="text-align: center;">
+    <div class="container">
       <p>&copy; <span id="year-survey"></span> Pili John. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    function toggleNav() {
+      document.getElementById('nav-menu').classList.toggle('show');
+    }
+    document.getElementById('year-survey').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

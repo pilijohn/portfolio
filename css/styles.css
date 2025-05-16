@@ -1,5 +1,5 @@
-/*——————————————————————————————————————————————  
-  1. Variables & Base Reset  
+/*——————————————————————————————————————————————
+  1. Variables & Base Reset
 ——————————————————————————————————————————————*/
 :root {
   --color-bg: #f9f9f9;
@@ -26,17 +26,17 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: var(--font-sans);
   background: var(--color-bg);
   color: var(--color-foreground);
   line-height: 1.5;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-/*——————————————————————————————————————————————  
-  2. Typography  
+/*——————————————————————————————————————————————
+  2. Typography
 ——————————————————————————————————————————————*/
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
@@ -49,8 +49,8 @@ p, li, label {
   margin-bottom: 1em;
 }
 
-/*——————————————————————————————————————————————  
-  3. Layout Helpers  
+/*——————————————————————————————————————————————
+  3. Layout Helpers
 ——————————————————————————————————————————————*/
 .container {
   width: min(90%, 1200px);
@@ -72,8 +72,8 @@ p, li, label {
   display: none !important;
 }
 
-/*——————————————————————————————————————————————  
-  4. Header & Navigation  
+/*——————————————————————————————————————————————
+  4. Header & Navigation
 ——————————————————————————————————————————————*/
 header {
   background: #fff;
@@ -103,8 +103,8 @@ nav.horizontal a.active {
   color: var(--color-primary);
 }
 
-/*——————————————————————————————————————————————  
-  5. Hero Section (Home)  
+/*——————————————————————————————————————————————
+  5. Hero Section (Home)
 ——————————————————————————————————————————————*/
 #hero {
   background: url('../images/hero-bg.jpg') center/cover no-repeat;
@@ -150,8 +150,8 @@ nav.horizontal a.active {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/*——————————————————————————————————————————————  
-  6. About Page (2‑Column Layout)  
+/*——————————————————————————————————————————————
+  6. About Page (2‑Column Layout)
 ——————————————————————————————————————————————*/
 .about-container {
   display: flex;
@@ -173,8 +173,8 @@ nav.horizontal a.active {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/*——————————————————————————————————————————————  
-  7. Projects Page (3‑Column Grid)  
+/*——————————————————————————————————————————————
+  7. Projects Page (3‑Column Grid)
 ——————————————————————————————————————————————*/
 .projects-grid {
   margin: 3rem 0;
@@ -213,8 +213,8 @@ nav.horizontal a.active {
   color: var(--color-muted);
 }
 
-/*——————————————————————————————————————————————  
-  8. Forms (Contact & Survey)  
+/*——————————————————————————————————————————————
+  8. Forms (Contact & Survey)
 ——————————————————————————————————————————————*/
 form {
   background: #fff;
@@ -271,8 +271,8 @@ form button:hover {
   background: var(--color-accent);
 }
 
-/*——————————————————————————————————————————————  
-  9. Embedded Media & Maps  
+/*——————————————————————————————————————————————
+  9. Embedded Media & Maps
 ——————————————————————————————————————————————*/
 iframe {
   width: 100%;
@@ -290,8 +290,8 @@ img[usemap] {
   margin: 2rem auto;
 }
 
-/*——————————————————————————————————————————————  
- 10. Dark/Light Mode Toggle  
+/*——————————————————————————————————————————————
+ 10. Dark/Light Mode Toggle
 ——————————————————————————————————————————————*/
 body.dark-mode {
   background: var(--color-foreground);
@@ -307,8 +307,8 @@ body.dark-mode a {
   color: var(--color-accent);
 }
 
-/*——————————————————————————————————————————————  
- 11. Footer  
+/*——————————————————————————————————————————————
+ 11. Footer
 ——————————————————————————————————————————————*/
 footer {
   margin-top: auto;
@@ -319,8 +319,8 @@ footer {
   box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
 }
 
-/*——————————————————————————————————————————————  
- 12. Print Styles  
+/*——————————————————————————————————————————————
+ 12. Print Styles
 ——————————————————————————————————————————————*/
 @media print {
   nav, .btn, button, form, iframe { display: none !important; }
@@ -328,8 +328,8 @@ footer {
   a::after { content: " (" attr(href) ")"; }
 }
 
-/*——————————————————————————————————————————————  
- 13. Responsive Breakpoints  
+/*——————————————————————————————————————————————
+ 13. Responsive Breakpoints
 ——————————————————————————————————————————————*/
 @media (max-width: 768px) {
   .about-container { flex-direction: column; }

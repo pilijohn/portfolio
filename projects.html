@@ -7,14 +7,131 @@
   <meta name="description" content="A showcase of Pili John's web development projects." />
   <meta name="keywords" content="Pili John, web development, portfolio, projects" />
   <meta name="author" content="Pili John" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/print.css" media="print" />
+  <style>
+    /* Variables */
+    :root {
+      --max-width: 1200px;
+      --spacing: 1rem;
+      --color-bg: #ffffff;
+      --color-primary: #0077cc;
+      --color-muted: #666666;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      background: var(--color-bg);
+      color: #333;
+    }
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 0 var(--spacing);
+      margin: 0 auto;
+    }
+    header .flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing) 0;
+      position: relative;
+    }
+    .hamburger {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    nav.horizontal {
+      display: none;
+      flex-direction: column;
+      gap: var(--spacing);
+      background: var(--color-bg);
+      position: absolute;
+      top: 100%;
+      right: var(--spacing);
+      width: calc(100% - 2 * var(--spacing));
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: var(--spacing);
+    }
+    nav.horizontal.show { display: flex; }
+    nav.horizontal a {
+      text-decoration: none;
+      color: inherit;
+      padding: 0.5rem 0;
+    }
+    nav.horizontal a.active {
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+    .project-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      padding: var(--spacing);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+    }
+    .btn {
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      align-self: start;
+    }
+    .project-details {
+      display: none;
+      margin-top: var(--spacing);
+      color: #555;
+    }
+    .project-details.show {
+      display: block;
+    }
+    @media (min-width: 768px) {
+      .hamburger { display: none; }
+      nav.horizontal {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        box-shadow: none;
+        width: auto;
+        padding: 0;
+      }
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    footer {
+      background: var(--color-bg);
+      padding: var(--spacing) 0;
+      text-align: center;
+    }
+    footer p { margin: 0; color: var(--color-muted); }
+  </style>
 </head>
 <body>
   <header>
-    <div class="container flex" style="align-items:center; justify-content:space-between;">
+    <div class="container flex">
       <h1>Pili John</h1>
-      <nav class="horizontal">
+      <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+      <nav class="horizontal" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="about.html">About Me</a>
         <a href="projects.html" class="active">Projects</a>
@@ -30,71 +147,57 @@
 
       <!-- Project Card 1 -->
       <article class="project-card" tabindex="0">
-        <div class="project-content">
-          <h3>Project One</h3>
-          <p class="project-summary">
-            A responsive landing page built with HTML5, CSS3, and vanilla JavaScript.
-          </p>
-          <button class="toggle-details btn">More Details</button>
-          <div class="project-details hidden">
-            <p>
-              This project features a mobile‑first design, custom CSS animations,
-              and form validation logic. View the code on
-              <a href="https://github.com/username/project-one" target="_blank">GitHub</a>
-              or see the live demo
-              <a href="https://username.github.io/project-one" target="_blank">here</a>.
-            </p>
-          </div>
+        <h3>Project One</h3>
+        <p class="project-summary">A responsive landing page built with HTML5, CSS3, and vanilla JavaScript.</p>
+        <button class="toggle-details btn">More Details</button>
+        <div class="project-details">
+          <p>This project features a mobile‑first design, custom CSS animations, and form validation logic. View the code on <a href="https://github.com/pilijohn/portfolio" target="_blank">GitHub</a> or see the live demo <a href="https://pilijohn.github.io/portfolio/" target="_blank">here</a>.</p>
         </div>
       </article>
 
       <!-- Project Card 2 -->
       <article class="project-card" tabindex="0">
-        <div class="project-content">
-          <h3>Project Two</h3>
-          <p class="project-summary">
-            A dynamic to‑do list app using React and localStorage for persistence.
-          </p>
-          <button class="toggle-details btn">More Details</button>
-          <div class="project-details hidden">
-            <p>
-              Built with React Hooks, this app allows users to add, edit,
-              and delete tasks. Tasks are saved in the browser’s localStorage
-              so data persists across sessions. Source code is on
-              <a href="https://github.com/username/project-two" target="_blank">GitHub</a>.
-            </p>
-          </div>
+        <h3>Project Two</h3>
+        <p class="project-summary">A dynamic to‑do list app using React and localStorage for persistence.</p>
+        <button class="toggle-details btn">More Details</button>
+        <div class="project-details">
+          <p>Built with React Hooks, this app allows users to add, edit, and delete tasks. Tasks are saved in the browser’s localStorage so data persists across sessions. Source code is on <a href="https://github.com/pilijohn/todo-app" target="_blank">GitHub</a>.</p>
         </div>
       </article>
 
       <!-- Project Card 3 -->
       <article class="project-card" tabindex="0">
-        <div class="project-content">
-          <h3>Project Three</h3>
-          <p class="project-summary">
-            A full‑stack blog platform with Node.js, Express, and MongoDB.
-          </p>
-          <button class="toggle-details btn">More Details</button>
-          <div class="project-details hidden">
-            <p>
-              Features include user authentication, CRUD for posts,
-              and a rich‑text editor. Deployed on Heroku with a live demo
-              available <a href="https://project-three.herokuapp.com" target="_blank">here</a>,
-              and source code on
-              <a href="https://github.com/username/project-three" target="_blank">GitHub</a>.
-            </p>
-          </div>
+        <h3>Project Three</h3>
+        <p class="project-summary">A full‑stack blog platform with Node.js, Express, and MongoDB.</p>
+        <button class="toggle-details btn">More Details</button>
+        <div class="project-details">
+          <p>Features include user authentication, CRUD for posts, and a rich‑text editor. Deployed on Heroku with a live demo available <a href="https://pilijohn-blog.herokuapp.com" target="_blank">here</a>, and source code on <a href="https://github.com/pilijohn/blog-platform" target="_blank">GitHub</a>.</p>
         </div>
       </article>
     </section>
   </main>
 
   <footer>
-    <div class="container" style="text-align:center;">
+    <div class="container">
       <p>&copy; <span id="year-projects"></span> Pili John. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    // Nav toggle
+    function toggleNav() {
+      document.getElementById('nav-menu').classList.toggle('show');
+    }
+    // Project details toggles
+    document.querySelectorAll('.toggle-details').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const details = btn.nextElementSibling;
+        details.classList.toggle('show');
+        btn.textContent = details.classList.contains('show') ? 'Hide Details' : 'More Details';
+      });
+    });
+    // Footer year
+    document.getElementById('year-projects').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

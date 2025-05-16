@@ -7,14 +7,108 @@
   <meta name="description" content="Learn more about Pili John: background, education, skills, and experience." />
   <meta name="keywords" content="Pili John, about, skills, background, web developer" />
   <meta name="author" content="Pili John" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/print.css" media="print" />
+  <style>
+    /* Variables */
+    :root {
+      --max-width: 1200px;
+      --spacing: 1rem;
+      --color-bg: #ffffff;
+      --color-primary: #0077cc;
+      --color-muted: #666666;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      background: var(--color-bg);
+      color: #333;
+    }
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 0 var(--spacing);
+      margin: 0 auto;
+    }
+    header .flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing) 0;
+      position: relative;
+    }
+    .hamburger {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    nav.horizontal {
+      display: none;
+      flex-direction: column;
+      gap: var(--spacing);
+      background: var(--color-bg);
+      position: absolute;
+      top: 100%;
+      right: var(--spacing);
+      width: calc(100% - 2 * var(--spacing));
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: var(--spacing);
+    }
+    nav.horizontal.show { display: flex; }
+    nav.horizontal a {
+      text-decoration: none;
+      color: inherit;
+      padding: 0.5rem 0;
+    }
+    nav.horizontal a.active {
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+    main.about-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+    .about-text {
+      padding: var(--spacing);
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    @media (min-width: 768px) {
+      .hamburger { display: none; }
+      nav.horizontal {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        box-shadow: none;
+        width: auto;
+        padding: 0;
+      }
+      main.about-container {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+      }
+    }
+    footer {
+      background: var(--color-bg);
+      padding: var(--spacing) 0;
+      text-align: center;
+    }
+    footer p { margin: 0; color: var(--color-muted); }
+  </style>
 </head>
 <body>
   <header>
-    <div class="container flex" style="align-items:center; justify-content:space-between;">
+    <div class="container flex">
       <h1>About Me</h1>
-      <nav class="horizontal">
+      <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+      <nav class="horizontal" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About Me</a>
         <a href="projects.html">Projects</a>
@@ -25,25 +119,16 @@
   </header>
 
   <main class="container about-container">
-    <!-- Text Column -->
-    <div class="about-text" style="padding: 20px">
+    <div class="about-text">
       <section aria-labelledby="story-heading">
         <h2 id="story-heading">My Story</h2>
-        <p>
-          Hello! I’m <strong>Pili John</strong>, a passionate web developer with a bachelor’s degree in Business Information System from Dodoma University.
-          Over the past 3 years, I’ve built responsive, user‑friendly web applications for clients across various industries,
-          ranging from e‑commerce sites to interactive dashboards.
-        </p>
-        <p>
-          My journey began when I coded my first HTML page in high school. Since then, I’ve honed my skills through
-          hands‑on projects, online courses, and contributing to open source. I thrive on solving complex problems
-          and turning ideas into reality with clean, maintainable code.
-        </p>
+        <p>Hello! I’m <strong>Pili John</strong>, a passionate web developer with a bachelor’s degree in Business Information System from Dodoma University. Over the past 3 years, I’ve built responsive, user‑friendly web applications for clients across various industries, ranging from e‑commerce sites to interactive dashboards.</p>
+        <p>My journey began when I coded my first HTML page in high school. Since then, I’ve honed my skills through hands‑on projects, online courses, and contributing to open source. I thrive on solving complex problems and turning ideas into reality with clean, maintainable code.</p>
       </section>
 
       <section aria-labelledby="skills-heading">
         <h2 id="skills-heading">Skills</h2>
-        <ul  style="padding: 20px">
+        <ul>
           <li>Front‑end
             <ol>
               <li>HTML5 &amp; CSS3 (Flexbox, Grid, Responsive Design)</li>
@@ -58,9 +143,9 @@
               <li>Databases: MongoDB, PostgreSQL</li>
             </ol>
           </li>
-          <li>Tools & Others
+          <li>Tools &amp; Others
             <ol>
-              <li>Version Control: Git & GitHub</li>
+              <li>Version Control: Git &amp; GitHub</li>
               <li>Deployment: Netlify, Vercel, Heroku</li>
               <li>UI/UX: Figma basics, Accessibility best practices</li>
             </ol>
@@ -68,19 +153,22 @@
         </ul>
       </section>
     </div>
-
-    <!-- Image Column -->
     <div class="about-image">
-      <img src="images/IMG-20240829-WA0042.jpg" style="width: 400px;" alt="Photo of Pili John" />
+      <img src="images/IMG-20240829-WA0042.jpg" alt="Photo of Pili John" />
     </div>
   </main>
 
   <footer>
-    <div class="container" style="text-align:center;">
+    <div class="container">
       <p>&copy; <span id="year-about"></span> Pili John. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    function toggleNav() {
+      document.getElementById('nav-menu').classList.toggle('show');
+    }
+    document.getElementById('year-about').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

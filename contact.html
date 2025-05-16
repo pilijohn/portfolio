@@ -7,14 +7,67 @@
   <meta name="description" content="Get in touch with Pili John for project inquiries, collaborations, or just a hello." />
   <meta name="keywords" content="contact, Pili John, web developer, email, phone" />
   <meta name="author" content="Pili John" />
-  
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/print.css" media="print" />
-  
-  <!-- Page‑specific (justified) -->
   <style>
-    /* Centered, card‑style contact form */
+    /* Variables */
+    :root {
+      --max-width: 1200px;
+      --spacing: 1rem;
+      --color-bg: #ffffff;
+      --color-primary: #0077cc;
+      --color-muted: #666666;
+      --color-accent: #e63946;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      background: var(--color-bg);
+      color: #333;
+    }
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 0 var(--spacing);
+      margin: 0 auto;
+    }
+    header .flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing) 0;
+      position: relative;
+    }
+    .hamburger {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    nav.horizontal {
+      display: none;
+      flex-direction: column;
+      gap: var(--spacing);
+      background: var(--color-bg);
+      position: absolute;
+      top: 100%;
+      right: var(--spacing);
+      width: calc(100% - 2 * var(--spacing));
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: var(--spacing);
+    }
+    nav.horizontal.show { display: flex; }
+    nav.horizontal a {
+      text-decoration: none;
+      color: inherit;
+      padding: 0.5rem 0;
+    }
+    nav.horizontal a.active {
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+    /* Contact Form Card */
     #contactForm {
       max-width: 600px;
       margin: 3rem auto;
@@ -23,30 +76,59 @@
       border-radius: 8px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
       display: grid;
-      gap: 1.5rem;
+      gap: var(--spacing);
     }
-    /* Label styling for clarity */
-    #contactForm label {
-      font-weight: 600;
+    #contactForm label { font-weight: 600; }
+    #contactForm input,
+    #contactForm textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font: inherit;
     }
-    /* Input & textarea focus state */
     #contactForm input:focus,
     #contactForm textarea:focus {
       border-color: var(--color-primary);
       outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.2);
+      box-shadow: 0 0 0 3px rgba(0,119,204,0.2);
     }
-    /* Submit button tweaks */
     #contactForm button {
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
       justify-self: start;
+    }
+    /* Footer */
+    footer {
+      background: var(--color-bg);
+      padding: var(--spacing) 0;
+      text-align: center;
+    }
+    footer p { margin: 0; color: var(--color-muted); }
+    /* Media Queries */
+    @media (min-width: 768px) {
+      .hamburger { display: none; }
+      nav.horizontal {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        box-shadow: none;
+        width: auto;
+        padding: 0;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container flex" style="justify-content: space-between; align-items: center;">
+    <div class="container flex">
       <h1>Contact Me</h1>
-      <nav class="horizontal">
+      <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+      <nav class="horizontal" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="about.html">About Me</a>
         <a href="projects.html">Projects</a>
@@ -58,47 +140,41 @@
 
   <main>
     <form id="contactForm" action="mailto:you@example.com" method="post" enctype="text/plain" novalidate>
-      <!-- Name -->
       <div>
-        <label for="name">Full Name<span aria-hidden="true" style="color:var(--accent-color)">*</span></label>
+        <label for="name">Full Name<span aria-hidden="true" style="color:var(--color-accent)">*</span></label>
         <input type="text" id="name" name="name" placeholder="Your Name" required />
       </div>
-
-      <!-- Email -->
       <div>
-        <label for="email">Email Address<span aria-hidden="true" style="color:var(--accent-color)">*</span></label>
+        <label for="email">Email Address<span aria-hidden="true" style="color:var(--color-accent)">*</span></label>
         <input type="email" id="email" name="email" placeholder="you@example.com" required />
       </div>
-
-      <!-- Phone -->
       <div>
         <label for="phone">Phone Number</label>
         <input type="tel" id="phone" name="phone" placeholder="+1234567890" pattern="^\+?\d{7,15}$" />
       </div>
-
-      <!-- Subject -->
       <div>
-        <label for="subject">Subject<span aria-hidden="true" style="color:var(--accent-color)">*</span></label>
+        <label for="subject">Subject<span aria-hidden="true" style="color:var(--color-accent)">*</span></label>
         <input type="text" id="subject" name="subject" placeholder="Project inquiry, collaboration, etc." required />
       </div>
-
-      <!-- Message -->
       <div>
-        <label for="message">Message<span aria-hidden="true" style="color:var(--accent-color)">*</span></label>
+        <label for="message">Message<span aria-hidden="true" style="color:var(--color-accent)">*</span></label>
         <textarea id="message" name="message" rows="6" placeholder="How can I help you?" required></textarea>
       </div>
-
-      <!-- Submit -->
-      <button type="submit" class="btn">Send Message</button>
+      <button type="submit">Send Message</button>
     </form>
   </main>
 
   <footer>
-    <div class="container" style="text-align: center; padding: 1rem 0;">
+    <div class="container">
       <p>&copy; <span id="year-contact"></span> Pili John. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    function toggleNav() {
+      document.getElementById('nav-menu').classList.toggle('show');
+    }
+    document.getElementById('year-contact').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
